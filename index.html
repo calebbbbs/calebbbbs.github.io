@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Caleb's First Website</title>
+        <style>
+    body {
+        background: rgb(45, 45, 45);
+        color: rgb(45, 45, 45);
+        padding: 10px;
+        font-family: arial;
+    }
+    #all-contents {
+        max-width: 800px;
+        margin: auto;
+    }
+
+    /* navigation menu */
+    nav {
+        background: rgb(200, 150, 95);
+        margin-bottom: 20px;
+        display: flex;
+        padding: 10px;
+        border-radius: 25px / 25px;
+    }
+    nav h1 {
+        display: flex;
+        align-items: center;
+        color: black;
+        flex: 1;
+        margin: 0;
+    }
+    nav ul {
+        list-style-image: none;
+    }
+    nav li {
+        display: inline-block;
+        padding: 0 10px;
+    }
+    nav a {
+        text-decoration: none;
+        color: black;
+    }
+
+    /* main container area beneath menu */
+    main {
+        background: rgb(185, 135, 85);
+        display: flex;
+        border: 25px;
+    }
+    .sidebar {
+        margin-right: 25px;
+        padding: 10px;
+    }
+    .sidebar img {
+        width: 200px;
+    }
+    .content {
+        flex: 1;
+        padding: 15px;
+        
+    }
+    h2, h3 {
+        margin: 0px;
+    }
+</style>
+    </head>
+    
+    <body>
+        <div id="all-contents">
+            <nav id="all-contents">
+                <h1>Moody Made</h1>
+                <ul>
+                    <li>
+                        <a href="index.html"> Home </a>
+                    </li>
+                    <li>
+                        <a href="portfolio.html"> Portfolio </a>
+                    </li>
+                </ul>
+            </nav>
+            
+            <main id="all-contents">
+                <div class="sidebar">
+                    <img src="https://scontent-atl3-1.cdninstagram.com/v/t51.2885-19/s150x150/153755126_129175592440929_4083617152315805228_n.jpg?_nc_ht=scontent-atl3-1.cdninstagram.com&_nc_ohc=C9wSsUAG9H0AX_oE1aB&tp=1&oh=af40419120be653f2bf215d955828edb&oe=6060A766">
+                </div>
+                
+                <div class="content">
+                    <h2>Caleb Roberts</h2>
+                    <p>Starving artist, bootcamp life at op spark...</p>
+                    <div class="interests">
+                        <h3>Interests</h3>
+                        <ul>
+                            <li>Bandos</li>
+                            <li>Music</li>
+                            <li>Nature</li>
+                            <li>Photography</li>
+                            <li>Podcasts</li>
+                            <li>Programming</li>
+                        </ul>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>
