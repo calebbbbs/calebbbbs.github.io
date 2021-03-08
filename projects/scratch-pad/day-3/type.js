@@ -14,8 +14,11 @@
  */
 function isArray(value) {
     // YOUR CODE BELOW HERE //
+    //stored value paramater into variable declared val
+    let valu = value;
     
-    
+    //return if val is an array or not using the Array.isArray method which returns a boolean value
+    return Array.isArray(valu);
     
     
     // YOUR CODE ABOVE HERE //
@@ -29,12 +32,17 @@ function isArray(value) {
  * null, not an Array, not a Date - all of these will return 'object' if used 
  * with typeof.
  */
+
 function isObject(value) {
     // YOUR CODE BELOW HERE //
-    
-    
-    
-    
+   let val = value;
+    if (val === null){
+      return false;
+    }else if (val.constructor === Object) {
+      return true;
+    } else {
+      return false;
+    }
     // YOUR CODE ABOVE HERE //
 }
 
@@ -46,7 +54,14 @@ function isObject(value) {
  */
 function isCollection(value) {
     // YOUR CODE BELOW HERE //
-    
+    let val = value;
+    if(val === null){
+        return false;
+    } else if (Array.isArray(val) || val.constructor === Object){
+        return true;
+    } else {
+        return false;
+    }
     
     
     
@@ -74,9 +89,19 @@ function isCollection(value) {
  */ 
 function typeOf(value) {
     // YOUR CODE BELOW HERE //
+    let val = typeof(value);
+    if (value === null){
+        return 'null';
+    } else if (Array.isArray(value)) {
+        return 'array';
+    } else if(value instanceof Date === true){
+        return 'date';
+    //} else if (typeof value === Object){
+       // return 'object';
+    } else 
+        return val;
     
-    
-    
+
     
     // YOUR CODE ABOVE HERE //
 }

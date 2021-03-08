@@ -12,9 +12,19 @@
 */
 function fizzBuzz() {
     // YOUR CODE GOES BELOW HERE //
-
-
-
+    //use a for loop to iterate from 1-100
+    //print numbers from 1-100, if a multiple of three print 'Fizz', if a multiple of five print 'Buzz', if a multiple of three and five pring 'FizzBuzz'
+    for (let i = 1; i <= 100; i++){
+         if (i % 5 === 0 && i % 3 === 0) {
+            console.log("FizzBuzz");
+        } else if (i % 3 === 0) {
+            console.log("Fizz");
+        } else if (i % 5 === 0) {
+            console.log("Buzz");
+        } else {
+            console.log(i);
+        }
+    }    
     // YOUR CODE GOES ABOVE HERE //
 }
 

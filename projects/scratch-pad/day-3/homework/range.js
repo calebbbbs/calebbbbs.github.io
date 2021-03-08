@@ -23,7 +23,21 @@
  */
 function range(start, end) {
     // YOUR CODE GOES BELOW HERE //
-    
+    //if statement checking if start is higher or lower
+    //push to an array
+    let rangeTracker = [];
+    if (start <= end){
+     for (let i = start; i <= end; i++){
+        rangeTracker.push(i);
+     }
+     return rangeTracker;
+     
+    } else if (start >= end) {
+        for (let i = start; i >= end ; i--){
+            rangeTracker.push(i);
+        }
+    return rangeTracker;
+    }
     
     
     
