@@ -131,7 +131,7 @@ function getObjectLength(object) {
  */
 function printObjectValuesInReverse(object) {
   // YOUR CODE BELOW HERE //
-  //use object.keys() to put keys in a separate array
+  //use object.values() to put keys in a separate array
   //.reverse() to reverse the array
   //forEach() method on obj array to print each indexed char if it is a key in
   let obj = Object.values(object).reverse();
