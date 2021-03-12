@@ -1,0 +1,214 @@
+//////////////////////////////////////////////////////////////////////
+// Function 1 - Object Values ////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+function objectValues(object) {
+    return Object.values(object);
+    
+} 
+
+//////////////////////////////////////////////////////////////////////
+// Function 2 - Keys to String ///////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+function keysToString(object) {
+    return Object.keys(object).join(" ");
+}
+
+//////////////////////////////////////////////////////////////////////
+// Function 3 - Values to String /////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+function valuesToString(object) {
+    let value1 = Object.values(object);
+    let value2 = [];
+    for (let i = 0; i < value1.length; i++){
+        if (typeof (value1[i]) === 'string'){
+            value2.push(value1[i]);
+   }
+ }
+return value2.join(" ");
+}
+//////////////////////////////////////////////////////////////////////
+// Function 4 - Array or Object //////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+function arrayOrObject(collection) {
+    if (collection.constructor === Object){
+        return 'object';
+    } else if (collection.constructor === Array){
+        return 'array';
+    }
+}
+
+//////////////////////////////////////////////////////////////////////
+// Function 5 - Capitalize Word //////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+function capitalizeWord(string) {
+    for (let i = 0; i < string.length; i++) {
+        let char = string[i].charAt(0)
+        return char.toUpperCase() + string.slice(1);
+    }
+}
+
+//////////////////////////////////////////////////////////////////////
+// Function 6 - Capitalize All Words /////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+function capitalizeAllWords(string) {
+    let strings = string.split(" ");
+    for (var i = 0; i < strings.length; i++) {
+        strings[i] = strings[i][0].toUpperCase() + strings[i].substr(1);
+    }
+    return strings.join(" ");
+}
+
+
+//////////////////////////////////////////////////////////////////////
+// Function 7 - Welcome Message //////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+function welcomeMessage(object) {
+    let name = object["name"];
+    return `Welcome ${name[0].toUpperCase() + name.slice(1)}!`;
+}
+
+//////////////////////////////////////////////////////////////////////
+// Function 8 - Profile Info /////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+function profileInfo(object) {
+    let name = object["name"];
+    let spec = object["species"];
+    return `${name[0].toUpperCase() + name.slice(1)} is a ${spec[0].toUpperCase() + spec.slice(1)}`;
+}
+
+//////////////////////////////////////////////////////////////////////
+// Function 9 - Maybe Noises /////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+function maybeNoises(object) {
+    if ((object.hasOwnProperty("noises")) && (object.noises.length >= 1)){
+        return object["noises"].join(" ");
+    } else {
+        return "there are no noises";
+    }
+}
+//////////////////////////////////////////////////////////////////////
+// Function 10 - Has Words ///////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+function hasWord(string, word) {
+    if (string.includes(word)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+//////////////////////////////////////////////////////////////////////
+// Function 11 - Add Friend //////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+function addFriend (name, object) {
+    object.friends.push(name);
+    return object;
+}
+
+//////////////////////////////////////////////////////////////////////
+// Function 12 - Is Friend ///////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+function isFriend(name, object) {
+    //take object and get friends key
+    //check if name is included in the friends key value
+    //return true or false if is or is not
+    if (object.hasOwnProperty("friends")) {
+        if (object.friends.includes(name)){
+            return true;
+        } else {
+            return false;
+        };
+    } else {
+        return false
+    }  
+}
+
+//////////////////////////////////////////////////////////////////////
+// Function 13 - Non-Friends /////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+function nonFriends(name, array) {
+    var arr = [];
+    for (var i = 0; i < array.length; i++){
+        if (name !== array[i].name){
+            if (array[i].friends.includes(name) === false) {
+                arr.push(array[i].name);
+            }
+        }
+    }
+    return arr;
+}
+
+//////////////////////////////////////////////////////////////////////
+// Function 14 - Update Object ///////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+function updateObject(object, key, value) {
+    object[key] = value;
+    return object;
+}
+
+//////////////////////////////////////////////////////////////////////
+// Function 15 - Remove Properties ///////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+function removeProperties(object, array) {
+    for (var key in object){
+        for (var element of array){
+            if(key === element){
+                delete object[key];
+            }
+        }
+    }    
+}            
+//////////////////////////////////////////////////////////////////////
+// Function 16 - Dedup ///////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+function dedup(array) {
+    let b = [];
+    let a = array.length;
+    for (let i = 0; i < a; i++) {
+        if (b.indexOf(array[i]) === -1){
+            b.push(array[i]);
+        } 
+    }
+    return b;
+}
+
+//////////////////////////////////////////////////////////////////////
+// DON'T REMOVE THIS CODE ////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
+
+if((typeof process !== 'undefined') &&
+   (typeof process.versions.node !== 'undefined')) {
+    // here, export any references you need for tests //
+    module.exports.objectValues = objectValues;
+    module.exports.keysToString = keysToString;
+    module.exports.valuesToString = valuesToString;
+    module.exports.arrayOrObject = arrayOrObject;
+    module.exports.capitalizeWord = capitalizeWord;
+    module.exports.capitalizeAllWords = capitalizeAllWords;
+    module.exports.welcomeMessage = welcomeMessage;
+    module.exports.profileInfo = profileInfo;
+    module.exports.maybeNoises = maybeNoises;
+    module.exports.hasWord = hasWord;
+    module.exports.addFriend = addFriend;
+    module.exports.isFriend = isFriend;
+    module.exports.nonFriends = nonFriends;
+    module.exports.updateObject = updateObject;
+    module.exports.removeProperties = removeProperties;
+    module.exports.dedup = dedup;
+}
