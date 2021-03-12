@@ -30,19 +30,20 @@ function fizzBuzz() {
 // drawChessboard //////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function drawChessboard(number) {
-  let board = '';
-  for (let i = 0; i < number; i++){
-    for (let j = 0; j < number; j++){
-      if ((i + j) % 2 == 0){
-        board += ' ';
-      } else {
-        board += '#';
+function drawChessboard(num) {
+  let n = num;
+  var board = "";
+  for (let i = 0;  i < n; i++) {
+    for (let j = 0; j < n; j++) {
+      if ((i + j) % 2 == 0) {
+        board += " ";
+      } else if((i + j) % 2 == 1) {
+        board += "#";
       }
     }
-    board += '\n';
+    board += "\n";
   }
-  return board;
+  console.log(board);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
