@@ -7,7 +7,7 @@
  *  [2]. Once created or declared, assign a value to the variable. 
  */
  
-// 1. Declarationn of Variable
+// 1. Declaration of Variable
 //  Once keyword var is given a name, the variable will be declared. Although declared, it will be undefined because it has not been initialized, or assigned a value.
     
         var variable1; // Declared, but not assigned a value
