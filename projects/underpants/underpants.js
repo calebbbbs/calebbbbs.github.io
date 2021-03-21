@@ -46,6 +46,7 @@ _.identity = function(value) {
 * _.typeOf([1,2,3]) -> "array"
 */
 
+
 _.typeOf = function(value) {
     let type = typeof value
     if(value === null){
@@ -56,6 +57,7 @@ _.typeOf = function(value) {
         return type;
     }
 };
+
 
 
 /** _.first
@@ -78,17 +80,19 @@ _.typeOf = function(value) {
 
 
 _.first = function (array, number) {
-    if (!Array.isArray(array) || (number < 0)) { 
+    if ((!Array.isArray(array)) || (number < 0)) { 
         return [];
     } else if (number > array.length) {
         return array;
-    } else if (Number.isNaN(number) === false){
+    } else if ((Number.isNaN(number)) || (number === undefined)){
         return array[0];
     } else {
         return array.slice(0, number);
     }
             
-};  
+};
+
+
 /** _.last
 * Arguments:
 *   1) An array
@@ -107,17 +111,27 @@ _.first = function (array, number) {
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
 
+
 _.last = function (array, number){
-    if (!Array.isArray(array) || (number < 0)) { 
+    if (!Array.isArray(array)){
         return [];
-    } else if (number > array.length) {
-        return array; 
-    } else if ((!!number) || typeof number !== Number){
-        return array[array.length - 1];
-    } else{
-        return array.slice(array.length - 1, number);
-    } 
-};
+    } else {
+        let arry = [];
+        for(let i = array.length - 1; i > 0; i--){
+            if ((Number.isNaN(number)) || (number === undefined)){
+                return array[array.length - 1];
+            } else if (number < 0){
+                return [];
+            } else if(array.length < number){
+                return array;
+            } else {
+                arry.push(array[i]);
+            }
+        }
+    return arry.reverse();
+    }
+}; 
+
 
 /** _.indexOf
 * Arguments:
@@ -189,7 +203,7 @@ _.each = function(collection, func){
         for (let i = 0; i < collection.length; i++){
             func(collection[i], i, collection);
         } 
-    }  else if (collection.constructor === Object){
+    }  else {
         for (var key in collection){
             func(collection[key], [key], collection);
         }
@@ -317,7 +331,7 @@ _.map = function(collection, func){
     _.each(collection, function(val, i,  col) {
         var result = func(val, i, col);
         maap.push(result);
-    })
+    });
     return maap;
 };
 
@@ -339,7 +353,7 @@ _.pluck = function(array, prop){
         
     })
     return arr;
-}
+};
 
 /** _.every
 * Arguments:
@@ -363,16 +377,22 @@ _.pluck = function(array, prop){
 */
 
 _.every = function(collection, funct){
-    var collected; 
+    var everyEvery = true;
     _.each(collection, function(val, i, col){
-        if(!funct(val, i, col)){
-            collected = false;
-        } else {
-            collected = true;
+    if(funct === undefined){
+      if(!!col[i] == 0){
+        everyEvery = false;
+      }
+    } else {
+        if(funct(val, i, col) === false){
+            everyEvery = false;
         }
-    });
-    return collected;
+    }
+});
+    return everyEvery;
 };
+
+
 /** _.some
 * Arguments:
 *   1) A collection
@@ -393,12 +413,22 @@ _.every = function(collection, funct){
 *   _.some([1,3,5], function(e){return e % 2 === 0}) -> false
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
-//_.some = function(collection, function){
-   //_.each(collection, function(val, i, col){
-       //s
-//   }) 
-//}
-    
+_.some = function(collection, func){
+  var someSome = false;
+  _.each(collection, function(val, i, col){
+      if(func === undefined){
+         if(!!col[i]){
+            someSome = true;
+         }    
+      } else {
+         if(func(val, i, col)){
+            someSome = true;
+            }
+         }
+  });
+  return someSome;
+};
+
 
 
 /** _.reduce
@@ -439,7 +469,7 @@ _.reduce = function(array, func, seed){
         }
         return seed;
     }
-}
+};
 
 /** _.extend
 * Arguments:
@@ -455,6 +485,10 @@ _.reduce = function(array, func, seed){
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+_.extend = function(object1, object2, ...args){
+    return Object.assign(object1, object2, ...args);
+};
+
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
