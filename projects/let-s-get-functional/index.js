@@ -45,7 +45,17 @@ var friendsCount;
 
 var topThreeTags;
 
-var genderCount;
+var genderCount= function(array){
+    return _.reduce(array, function(resultObj, customerObj){
+        if(resultObj[customerObj.gender]) {
+            resultObj[customerObj.gender] += 1;
+        } else {
+            resultObj[customerObj.gender] = 1;
+        }
+    return resultObj;
+    }, {});
+};
+
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
