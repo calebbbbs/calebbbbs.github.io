@@ -450,20 +450,13 @@ _.some = function(collection, func){
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
 _.reduce = function(array, func, seed){
-   // check if seed exists, not undefined
     if (seed !== undefined){
-       
-   // if so loop over the array
     for(let i = 0; i < array.length; i++){
-      //Call the func function on the seed, value, indes, and array
-      //reassogn seed to be the value from the function call
       seed = func(seed, array[i], i, array);
     }
     return seed;
     } else {
-        //reassign seed to be the first value in the array
          seed = array[0];
-        //loop through array beginning at index 1
         for (var i = 1; i < array.length; i++){
             seed = func(seed, array[i], i, array);
         }

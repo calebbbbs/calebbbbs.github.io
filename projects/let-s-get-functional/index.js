@@ -25,25 +25,101 @@ var maleCount = function(array) {
     var maleArray = _.filter(array, function(customerObj){
         return customerObj["gender"] === "male";
     });
-    return maleArray.length
+    return maleArray.length;
 };
 
-var femaleCount;
+var femaleCount = function(array) {
+    return _.reduce(array, function(resultObj, customerObj){
+        if(customerObj["gender"] === "female") {
+            resultObj += 1;   
+        }
+        return resultObj;
+    }, 0);
+};
     
 
-var oldestCustomer;
+ var oldestCustomer = function(array){
+    var count = 0;
+    var nema;
+    _.each(array, function(val, i, col){
+        if(val["age"] >= count){
+            count = val["age"]; 
+            nema = val["name"];
+        }
+    });
+    return nema;
+};  
 
-var youngestCustomer;
+var youngestCustomer = function(array){
+    var count2 = 100;
+    var naem;
+    _.each(array, function(val, i, col){
+        if(val.age < count2){
+            count2 = val.age;
+            naem = val.name;
+        }
+    });
+    return naem;
+};
 
-var averageBalance;
+var averageBalance = function(array) {
+    return _.reduce(array, function(resultObj, customerObj){
+        if(customerObj["balance"]){
+            resultObj += customerObj["balance"].slice();
+        }
+        return +resultObj.slice(1) / array.length;
+    }, 0);
+};
 
-var firstLetterCount;
+var firstLetterCount = function(array, letter){
+    var output = 0;
+    _.each(array, function(val, i, col){
+        if(val.name[0].toUpperCase() === letter.toUpperCase()){
+            output += 1;
+        }
+    });
+    return output;
+};
 
-var friendFirstLetterCount;
+var friendFirstLetterCount = function(array, customer, letter){
+    var output = 0; 
+    _.each(array, function(val, i, col){
+        if(val.name[0].toUpperCase() === letter.toUpperCase()){
+             output +=1;
+        }
+    });
+    return output;
+};
 
-var friendsCount;
+var friendsCount = function(array, name){
+    let friend = [];
+    _.each(array, function(val, i, col){
+        if (val.friends.includes(name)){
+            return friend.push(name);
+        }
+        
+    });
+    return friend;
+};
 
-var topThreeTags;
+var topThreeTags = function(array){
+    var topThree = [];
+    var words = _.reduce(array, function(resultObj, tags){
+        if(resultObj[tags]){
+            resultObj[tags] += 1;
+        } else {
+            resultObj[tags] = 1;
+        }
+        return resultObj;
+    }, {});
+    for (var tags in words){
+        if(words[tags] <= 3){
+            return topThree.push(tags);
+        }
+        
+    }
+    return topThree;
+};
 
 var genderCount= function(array){
     return _.reduce(array, function(resultObj, customerObj){
