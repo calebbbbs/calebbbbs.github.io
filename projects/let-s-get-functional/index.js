@@ -65,10 +65,11 @@ var youngestCustomer = function(array){
 var averageBalance = function(array) {
     return _.reduce(array, function(resultObj, customerObj){
         if(customerObj["balance"]){
-            resultObj += customerObj["balance"].slice();
+            resultObj += Number(customerObj["balance"].slice(1).replace(",", ""));
         }
-        return +resultObj.slice(1) / array.length;
-    }, 0);
+        //console.log(Number(customerObj["balance"].slice(1).replace(",", ""), "hereeeeeeeee"));
+        return resultObj;
+    }, 0) / array.length;
 };
 
 var firstLetterCount = function(array, letter){
@@ -84,41 +85,74 @@ var firstLetterCount = function(array, letter){
 var friendFirstLetterCount = function(array, customer, letter){
     var output = 0; 
     _.each(array, function(val, i, col){
-        if(val.name[0].toUpperCase() === letter.toUpperCase()){
-             output +=1;
+        if(customer === val.name){
+            _.each(val.friends, function(val, i, col){
+                if(val.name[0].toUpperCase() === letter.toUpperCase()){
+                    output ++;
+        }
+    });
         }
     });
     return output;
 };
 
 var friendsCount = function(array, name){
-    let friend = [];
+    let arr = [];
     _.each(array, function(val, i, col){
-        if (val.friends.includes(name)){
-            return friend.push(name);
-        }
+        _.each(val.friends, function(friend, i, col){
+            if (friend["name"] === name){
+                arr.push(val["name"]);
+            }
+        });
         
     });
-    return friend;
+    return arr;
 };
 
-var topThreeTags = function(array){
-    var topThree = [];
-    var words = _.reduce(array, function(resultObj, tags){
-        if(resultObj[tags]){
-            resultObj[tags] += 1;
-        } else {
-            resultObj[tags] = 1;
-        }
-        return resultObj;
-    }, {});
-    for (var tags in words){
-        if(words[tags] <= 3){
-            return topThree.push(tags);
-        }
-        
+var topThreeTags = function(array) {
+//   const result = [];
+//   _.each(array, function(val, i, col){
+//       if
+//       _.each(array["tags"], function(val2, i2, coll){
+           
+//       })
+//   })
+    
+    
+    
+  const result = [];
+  var top1 = 0;
+  var top2 = 0; 
+  var top3 = 0; 
+  const storage = _.reduce(array, function(obj, mainArray, i, col) {
+    _.each(mainArray["tags"], function(tag) {
+      if(obj[tag]) {
+        obj[tag]++;
+      } else {
+        obj[tag] = 1;
+      }
+    });
+  // console.log(obj);
+    return obj;
+  }, {});
+    console.log(storage);
+  for (var key in storage) {
+    if(storage[key] === 3) {
+      top1 = key;
+      result.push(top1);
+    } else if (top2 <= key) {
+      top2 = key;
+      result.push(top2);
+    } else if (top3 <= key) {
+      top3 = key;
+      result.push(top3);
     }
-    return topThree;
+  }
+//   result.push(top1.name)
+//   result.push(top2.name)
+//   result.push(top3.name)
+    console.log(result);
+    return result;
 };
 
 var genderCount= function(array){
