@@ -2,13 +2,14 @@
 // range ///////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-function range(num1, num2, step) {
+function range(num1, num2, step = 1) {
   let arr = [];
   if(num1 === num2){
     return [];
     } else {
   for (let i = num1; i <= num2; i++){
     arr.push(i);
+    i + step;
   }
     }
   return arr;

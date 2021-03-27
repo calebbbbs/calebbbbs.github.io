@@ -110,16 +110,6 @@ var friendsCount = function(array, name){
 };
 
 var topThreeTags = function(array) {
-//   const result = [];
-//   _.each(array, function(val, i, col){
-//       if
-//       _.each(array["tags"], function(val2, i2, coll){
-           
-//       })
-//   })
-    
-    
-    
   const result = [];
   var top1 = 0;
   var top2 = 0; 
@@ -132,7 +122,6 @@ var topThreeTags = function(array) {
         obj[tag] = 1;
       }
     });
-  // console.log(obj);
     return obj;
   }, {});
     console.log(storage);
