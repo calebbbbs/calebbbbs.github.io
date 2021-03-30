@@ -90,3 +90,40 @@
           console.log(obj1.randomArray); // Will print [ 'too', 70, true, false, NaN, Infinity, null ] to the console, with the undefined value at the end of the array not being logged. 
  
                                // Referencing and making changes to a complex data type will cause permanent changes to the one being referenced. 
+    
+// 5. Accessing objects and arrays
+// Complex data types can hold multiple pieces of data at one time, you need to be able to access the data stored within them. We have bracket notation and .dot notation to help us with that.
+
+          let newObj = {
+              name: "Botty White",
+              id: 4568234,
+              duty: "fix the code"
+          };
+          
+          console.log(newObj.name); // will print 'Botty White' to the console because the key of name was accessed by using newObj.name.
+          
+          newObj.deployed = false; // This will either create a new key for deployed and set it to false, or it will set the existing key to be false. Since we do not have that key yet, it will create and set to false.
+          
+          console.log(newObj); // This will show our newObj with the new deployed key set to false. When Botty is sent to fix the code her deployed key will be set to true.
+          
+          console.log(newObj["name"]); // Will print 'Botty White' to the console as well because bracket notation allows us to access the key of name as well. Very important to use quotes because in bracket notaion
+                                       // the system will be looking for a key with the actual key named "name". 
+          
+          newObj["name"] = "Botty Sparks"; // Botty got married and changed her last name. To change the name you can use bracket notation and reassign the key of name.
+                                        
+          console.log(newObj); // Now when you log newObj to the console you see "Botty Sparks" logged to the console instead of "Botty White".
+          
+          let arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0];
+          // Arrays can only be accessed with bracket notation, they can not be accessed with dot notation like objects can. 
+          
+          console.log(arr[0]); // This will log 1 because the first index is accessed with 0. Indexed lists begin at 0 not 1. 
+          
+          console.log(arr[arr.length - 1]); // This will log 0 to the console. The length of an array begins at 1, but the index begins at 0, so when searching for the end of the array, one must subtract one 
+                                            // from the length. -2 from the length and you will get the second to last element, and so on. 
+                                            
+          arr[arr.length - 1] = 10; // Since bracket notation allows us to access the index number, and the data can be mutated since it is complex, we are able to reassign the value of any index to a different value.
+          
+          arr[arr.length] = 11; // So this will add an element of 11 at the end of the array. Notice that if you go to length, you won't reassign the existing last element just simply extend the length further. 
+                                // The next time you access arr[arr.length - 1], 11 will be the data you access.
+            
+          console.log(arr); // This will log the arr array with 0 chaned to 10, and 11 added to the end of the array. [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
