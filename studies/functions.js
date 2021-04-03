@@ -76,7 +76,7 @@ function add2V(num1, num2){
         return v += num;
     }
     return addToV();    
-}
+};
 console.log(add2V(5, 5)); // Logs 20 to the console, because v = 10, and num1 and num2 were both 5. 10 + (5 + 5) = 20.
 
 
